@@ -3,7 +3,7 @@ const DrinksLayout = ({ children }) => {
     <div className="max-w-xl">
       <div className="mockup-code  mb-8">
         <pre data-prefix="$">
-          <code> mpx create next Js app </code>
+          <code> npx create next Js app </code>
         </pre>
       </div>
 
