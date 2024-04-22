@@ -19,7 +19,7 @@ const DrinksPage = async () => {
     <>
       <Drinks drinks={data.drinks} />
     </>
-  );
+  ); 
 };
 
 export default DrinksPage;

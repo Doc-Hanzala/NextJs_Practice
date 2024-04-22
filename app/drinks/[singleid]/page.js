@@ -17,7 +17,6 @@ const SingleDrinkPage = async ({ params }) => {
   const title = data?.drinks[0]?.strDrink;
   const img = data?.drinks[0]?.strDrinkThumb;
 
-  console.log(title, img);
 
   return (
     <div>

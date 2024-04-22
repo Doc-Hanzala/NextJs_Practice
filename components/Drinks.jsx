@@ -7,7 +7,7 @@ const Drinks = ({ drinks }) => {
         return (
           <li key={drink.idDrink}>
             <Link className="text-xl font-bold  " href={`/drinks/${drink.idDrink}`}>
-              {drink.strDrink}
+              {drink.strDrink} 
             </Link>
           </li>
         );
