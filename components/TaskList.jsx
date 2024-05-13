@@ -1,13 +1,10 @@
-import prisma from "@/utils/db";
-import Link from "next/link";
 import Delete from "./Delete";
+import { getAllTasks } from "@/utils/action";
+
+import Link from "next/link";
 
 const TaskList = async () => {
-  const tasks = await prisma.task.findMany({
-    orderBy: {
-      createdAT: "desc",
-    },
-  });
+  const tasks = await getAllTasks();
 
   if (tasks.length === 0) {
     return <h2 className="mt-8 font-bold text-lg">nothing to show ....</h2>;
