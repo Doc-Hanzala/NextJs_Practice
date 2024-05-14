@@ -2,6 +2,7 @@
 import prisma from "@/utils/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { resolve } from "styled-jsx/css";
 
 export const getAllTasks = async () => {
   return await prisma.task.findMany({
@@ -12,6 +13,20 @@ export const getAllTasks = async () => {
 };
 
 export const createTask = async (formData) => {
+  const content = formData.get("content");
+
+  await prisma.task.create({
+    data: {
+      content,
+    },
+  });
+
+  revalidatePath("/tasks");
+};
+
+export const createTaskCustom = async (formData) => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   const content = formData.get("content");
 
   await prisma.task.create({
@@ -44,7 +59,7 @@ export const getTask = async (id) => {
 export const editTask = async (formData) => {
   const id = formData.get("id");
   const content = formData.get("content");
-  const completed = formData.get("completed")
+  const completed = formData.get("completed");
 
   await prisma.task.update({
     where: {
