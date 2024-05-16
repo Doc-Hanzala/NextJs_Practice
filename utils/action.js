@@ -2,7 +2,7 @@
 import prisma from "@/utils/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { resolve } from "styled-jsx/css";
+import { z } from "zod";
 
 export const getAllTasks = async () => {
   return await prisma.task.findMany({
@@ -25,18 +25,21 @@ export const createTask = async (formData) => {
 };
 
 export const createTaskCustom = async (prevState, formData) => {
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
+  const Task = z.object({
+    content: z.string().min(5),
+  });
 
   const content = formData.get("content");
   try {
+    Task.parse({content})
     await prisma.task.create({
       data: {
         content,
       },
     });
-    return { message: "success !!!" };
+    return { message: "success" };
   } catch (error) {
-    return { message: "error ...." };
+    return { message: "error" };
   }
 
   revalidatePath("/tasks");
