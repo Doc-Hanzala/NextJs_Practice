@@ -9,7 +9,7 @@ const DeleteBtn = () => {
     <button disabled={pending} className="btn btn-error capitalize text-white">
       {pending ? "please wait" : "delete"}
     </button>
-  );
+  ); 
 };
 
 const Delete = ({ id }) => {
