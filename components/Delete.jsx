@@ -1,4 +1,4 @@
-'use client'
+'use client '
 
 import { deleteTask } from "@/utils/action";
 import { useFormStatus } from "react-dom";
